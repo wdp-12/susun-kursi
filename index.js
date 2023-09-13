@@ -11,15 +11,26 @@
 "use strict";
 
 function generateSeats(row) {
-  // Tulis kode disini
+  let seats = [];
+  for (let i = 0; i < row; i++) {
+    seats.push([]); // Setiap baris mewakili array kosong untuk tempat duduk.
+  }
+  return seats;
 }
+function managePerson(arr, row) {
+  let seats = generateSeats(row); // Membuat tempat duduk kosong berdasarkan jumlah baris.
+  for (let i = 0; i < arr.length; i++) {
+    seats[i % row].push(arr[i]); // Memasukkan orang-orang ke dalam tempat duduk dengan memperhatikan baris yang tersedia.
+  }
 
-function managePerson(arr, rowSeats) {
-  // Tulis kode disini
+  return seats;
 }
 
 function printSeats(seats) {
-  // Tulis kode disini
+  for (let i = 0; i < seats.length; i++) {
+    console.log(`Baris ${i} : `, seats[i]); // Mencetak setiap baris tempat duduk beserta isinya.
+  }
 }
 
-managePerson(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"], 3);
+const result = managePerson(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"], 3);
+printSeats(result);
